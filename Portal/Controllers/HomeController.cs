@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Portal.Models;
+using Portal.Services;
 using System.Diagnostics;
 
 namespace Portal.Controllers
@@ -7,13 +8,24 @@ namespace Portal.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IAdminService _adminService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+            IAdminService adminService)
         {
             _logger = logger;
+            _adminService = adminService;
         }
 
         public IActionResult Home()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult Programs()
         {
             return View();
         }

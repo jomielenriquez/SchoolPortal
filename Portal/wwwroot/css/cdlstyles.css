@@ -1,6 +1,17 @@
 .fontgreen{
     color:rgb(7, 105, 59) !important
 }
+.fontyellow {
+    color: #958c10 !important
+}
+.inlineblock {
+    display: inline-block;
+    padding: 20px !important;
+    border: solid 1px rgb(7, 105, 59) !important;
+    width: 33% !important;
+    margin: auto !important;
+    text-align: center;
+}
 .missionClass{
     width: 80%;
     margin-left: auto !important;
