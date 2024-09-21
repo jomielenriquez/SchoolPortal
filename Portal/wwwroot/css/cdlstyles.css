@@ -1,0 +1,263 @@
+.fontgreen{
+    color:rgb(7, 105, 59) !important
+}
+.missionClass{
+    width: 80%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 10px !important;
+    padding:10px !important;
+    border: 2px solid rgb(7, 105, 59, .2) !important;
+}
+html.hillstar-theme #colibri [data-colibri-component="dropdown-menu"] ul {
+justify-content: none !important;
+}
+
+html.hillstar-theme #colibri [data-colibri-component="dropdown-menu"] .h-mobile-menu {
+text-align: %s
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h30"] .h-column-container {
+flex-basis: auto
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h30"] .h-column-container:nth-child(1) a {
+margin: inherit
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h30"] .h-column-container:nth-child(2) {
+display: block
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h30"] div>.colibri-menu-container>ul.colibri-menu {
+justify-content: flex-end
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h30"][data-colibri-component="navigation"]#navigation {
+padding-top: 20px;
+padding-bottom: 20px
+}
+
+html.hillstar-theme #colibri [data-selective-refresh='colibriwp-theme-components-innerheader-topbar'] {
+display: block
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h25"] {
+min-height: auto;
+background-color: #1f2225;
+background-image: url("../Images/Background.png");
+background-position: %s;
+background-attachment: scroll;
+background-repeat: no-repeat;
+background-size: cover;
+padding-top: 50px;
+padding-bottom: 110px
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h25"] .background-layer .shape-layer {
+background-image: url(https://wp-themes.com/wp-content/themes/hillstar//resources/images/header-shapes/none.png)
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h25"] .background-layer .overlay-layer {
+background-color: rgb(28, 28, 36);
+opacity: calc(50 / 100)
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h25"] .h-separator {
+height: 100px !important
+}
+
+html.hillstar-theme #colibri [data-colibri-id="10-h28"] {}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-column-container {
+width: 100%
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-column-container:nth-child(1) {}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-column-container:nth-child(2) {
+display: none
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] {
+    min-height: auto;
+    background-color: #1f2225;
+    background-image: url("../Images/Background.png");
+    background-position: %s;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 120px;
+    padding-bottom: 200px
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .background-layer .shape-layer {
+background-image: url(https://wp-themes.com/wp-content/themes/hillstar//resources/images/header-shapes/none.png)
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .background-layer .overlay-layer {
+background-color: rgb(28, 28, 36);
+opacity: calc(50 / 100)
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-separator {
+height: 100px !important
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h28"] {
+text-align: none
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h29"] {
+text-align: none
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h30"] {}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h2"] .h-column-container {
+flex-basis: auto
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h2"] .h-column-container:nth-child(1) a {
+margin: inherit
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h2"] .h-column-container:nth-child(2) {
+display: block
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h2"] div>.colibri-menu-container>ul.colibri-menu {
+justify-content: flex-end
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h2"][data-colibri-component="navigation"]#navigation {
+padding-top: 20px;
+padding-bottom: 20px
+}
+
+html.hillstar-theme #colibri [data-selective-refresh='colibriwp-theme-components-frontheader-topbar'] {
+display: block
+}
+
+html.hillstar-theme #colibri #hero img {
+box-shadow: none
+}
+
+html.hillstar-theme #colibri #hero div.h-image__frame {
+border-style: solid;
+background-color: transparent
+}
+
+html.hillstar-theme #colibri #hero .h-image__frame {
+background-color: rgba(0, 0, 0, 0.5);
+border-color: rgba(0, 0, 0, 0.5);
+width: 100%;
+height: 100%;
+transform: translateX(4%) translateY(6%);
+border-width: 10px;
+z-index: -1;
+display: none
+}
+
+html.hillstar-theme #colibri .colibri-post-has-no-thumbnail.colibri-post-thumbnail-has-placeholder .colibri-post-thumbnail-content {
+background-color: rgb(160, 160, 206)
+}
+
+@media (max-width:767px) {
+html.hillstar-theme #colibri [data-colibri-id="10-h25"] {
+    background-attachment: scroll
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-section-grid-container .h-column-container:first-child {
+    width: 100% !important
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-section-grid-container .h-column-container:nth-child(2) {
+    width: 100% !important
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] {
+    background-attachment: scroll
+}
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+html.hillstar-theme #colibri [data-colibri-id="10-h25"] {
+    background-attachment: scroll
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-section-grid-container .h-column-container:first-child {
+    width: 100% !important
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-section-grid-container .h-column-container:nth-child(2) {
+    width: 100% !important
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] {
+    background-attachment: scroll
+}
+}
+
+@media (min-width: 1024px) {
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-section-grid-container .h-column-container:first-child {
+    width: 85% !important
+}
+
+html.hillstar-theme #colibri [data-colibri-id="5-h25"] .h-section-grid-container .h-column-container:nth-child(2) {
+    width: calc(100% - 85%) !important
+}
+}
+</style>
+<style type="text/css">
+@keyframes resizeanim {
+from {
+    opacity: 0;
+}
+
+to {
+    opacity: 0;
+}
+}
+
+.resize-triggers {
+animation: 1ms resizeanim;
+visibility: hidden;
+opacity: 0;
+}
+
+.resize-triggers,
+.resize-triggers>div,
+.contract-trigger:before {
+content: " ";
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
+overflow: hidden;
+}
+
+.resize-triggers>div {
+background: #eee;
+overflow: auto;
+}
+
+.contract-trigger:before {
+width: 200%;
+height: 200%;
+}
+.h-navigation-padding {
+    padding-top: 60px !important;
+}
+.remove-border-radius{
+    border-radius: 0 !important;
+}
+.white-text{
+    color:white !important;
+}
+.footer-background {
+    background-image: url('../Images/footer.png');
+    background-size: cover;
+}
