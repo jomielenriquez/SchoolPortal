@@ -20,6 +20,18 @@
     padding:10px !important;
     border: 2px solid rgb(7, 105, 59, .2) !important;
 }
+.courseText {
+    font-family: Nunito Sans !important;
+    font-weight: 300 !important;
+    text-transform: uppercase !important;
+    font-size: 0.7vw !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    text-decoration:none !important;
+    overflow: hidden !important;
+    padding: 20px !important;
+    letter-spacing: 1px !important;
+}
 html.hillstar-theme #colibri [data-colibri-component="dropdown-menu"] ul {
 justify-content: none !important;
 }
