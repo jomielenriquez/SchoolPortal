@@ -4,16 +4,24 @@ using Portal.Data;
 using Portal.Services;
 using Portal.Data.Interface;
 using Portal.Data.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Add cookie-based authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Admin/Login"; // Redirect to login page if not authenticated
+    });
+
 builder.Services.AddDbContext<PortalDBContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IBaseRepository<Admin>, AdminRepository>();
+builder.Services.AddScoped<IAdminRepository<Admin>, AdminRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();

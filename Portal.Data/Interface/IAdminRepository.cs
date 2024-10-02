@@ -1,13 +1,12 @@
-﻿using Portal.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Portal.Services
+namespace Portal.Data.Interface
 {
-    public interface IAdminService
+    public interface IAdminRepository<Admin>
     {
         IEnumerable<Admin> GetAll();
         //IEnumerable<T> GetAllWithOptions(PageModel pageModel);
@@ -16,7 +15,8 @@ namespace Portal.Services
         int Save(Admin data);
         Admin GetWithId(Guid id);
         int Update(Admin data);
-        public Admin GetUsingUsernamePassword(string username, string password);
+        Admin GetUsingUsernamePassword(string username, string password);
         bool IsValidUsernamePassword(string username, string password);
+
     }
 }

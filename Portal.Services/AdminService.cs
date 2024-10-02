@@ -1,4 +1,5 @@
-﻿using Portal.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Portal.Data.Entities;
 using Portal.Data.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace Portal.Services
 {
     public class AdminService : IAdminService
     {
-        private readonly IBaseRepository<Admin> _admin;
+        private readonly IAdminRepository<Admin> _admin;
 
-        public AdminService(IBaseRepository<Admin> admin) { _admin = admin; }
+        public AdminService(IAdminRepository<Admin> admin) { _admin = admin; }
         public int DeleteWithIds(Guid[] id)
         {
             throw new NotImplementedException();
@@ -21,6 +22,15 @@ namespace Portal.Services
         public IEnumerable<Admin> GetAll()
         {
             return _admin.GetAll();
+        }
+        public Admin GetUsingUsernamePassword(string username, string password)
+        {
+            return _admin.GetUsingUsernamePassword(username, password);
+        }
+
+        public bool IsValidUsernamePassword(string username, string password)
+        {
+            return _admin.IsValidUsernamePassword(username, password);
         }
 
         public Admin GetWithId(Guid id)
