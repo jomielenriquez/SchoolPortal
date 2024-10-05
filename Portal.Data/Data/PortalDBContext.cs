@@ -18,6 +18,9 @@ namespace Portal.Data.Data
         public DbSet<Admin> Admin { get; set; }
         public DbSet<Role> Role { get; set; }
 
+        public DbSet<SystemParameter> SystemParameter { get; set; }
+        public DbSet<SystemParameterType> SystemParameterType { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Admin>()
@@ -28,8 +31,13 @@ namespace Portal.Data.Data
 
             modelBuilder.Entity<Admin>()
                 .HasOne(u => u.Role)
-                .WithMany(r => r.Admin)
+                .WithMany(r => r.Admins)
                 .HasForeignKey(u => u.ROLEID);
+
+            modelBuilder.Entity<SystemParameter>()
+                .HasOne(u => u.SystemParameterType)
+                .WithMany(r => r.SystemParameters)
+                .HasForeignKey(u => u.SystemParameterTypeId);
 
             base.OnModelCreating(modelBuilder);
         }

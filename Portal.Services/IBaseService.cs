@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Portal.Data.Interface
+namespace Portal.Services
 {
-    public interface IBaseRepository<T>
+    public interface IBaseService<T>
     {
         IEnumerable<T> GetAll();
         //IEnumerable<T> GetAllWithOptions(PageModel pageModel);

@@ -24,6 +24,13 @@ builder.Services.AddDbContext<PortalDBContext>(
 builder.Services.AddScoped<IAdminRepository<Admin>, AdminRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 
+
+builder.Services.AddScoped<ISystemParameterRepository<SystemParameter>, SystemParameterRepository>();
+builder.Services.AddScoped<IBaseRepository<SystemParameter>, SystemParameterRepository>();
+builder.Services.AddScoped<ISystemParameterService, SystemParameterService>();
+builder.Services.AddScoped<IBaseService<SystemParameter>, SystemParameterService>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

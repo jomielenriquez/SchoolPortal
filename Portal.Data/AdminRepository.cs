@@ -1,4 +1,5 @@
-﻿using Portal.Data.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Portal.Data.Data;
 using Portal.Data.Entities;
 using Portal.Data.Interface;
 using System;
@@ -31,7 +32,9 @@ namespace Portal.Data
 
         public Admin GetUsingUsernamePassword(string username, string password)
         {
-            return _dbContext.Admin.Where(a => a.USERNAME == username && a.PASSWORD == ComputeMd5Hash(password)).FirstOrDefault() ?? new Admin();
+            return _dbContext.Admin
+                .Include(a => a.Role)
+                .Where(a => a.USERNAME == username && a.PASSWORD == ComputeMd5Hash(password)).FirstOrDefault() ?? new Admin();
         }
 
         public Admin GetWithId(Guid id)

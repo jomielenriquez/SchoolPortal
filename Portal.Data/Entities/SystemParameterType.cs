@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Portal.Data.Entities
 {
-    public class Role
+    public class SystemParameterType
     {
         [Key]
         [Required]
-        public int ID { get; set; }
+        public Guid Id { get; set; }
         [Required]
-        public string NAME { get; set; }
-        public string DESCRIPTION { get; set; }
-
-        public virtual ICollection<Admin> Admins { get; set; }
+        public string Name { get; set; }
+        [Required]
+        public string Description { get; set; }
+        public virtual ICollection<SystemParameter> SystemParameters { get; set;}
     }
 }
