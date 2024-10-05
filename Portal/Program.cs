@@ -30,6 +30,13 @@ builder.Services.AddScoped<IBaseRepository<SystemParameter>, SystemParameterRepo
 builder.Services.AddScoped<ISystemParameterService, SystemParameterService>();
 builder.Services.AddScoped<IBaseService<SystemParameter>, SystemParameterService>();
 
+builder.Services.AddScoped<INewsAndAnnouncementsRepository, NewsAndAnnouncementsRepository>();
+builder.Services.AddScoped<IBaseRepository<NewsAndAnnouncements>, NewsAndAnnouncementsRepository>();
+builder.Services.AddScoped<INewsAndAnnouncementsService, NewsAndAnnouncementsService>();
+builder.Services.AddScoped<IBaseService<NewsAndAnnouncements>, NewsAndAnnouncementsService>();
+
+builder.Services.AddScoped<IBaseRepository<FileStorage>, FileStorageRepository>();
+builder.Services.AddScoped<IBaseService<FileStorage>, FileStorageService>();
 
 var app = builder.Build();
 

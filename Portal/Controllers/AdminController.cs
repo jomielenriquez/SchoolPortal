@@ -63,6 +63,11 @@ namespace Portal.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Files()
+        {
+            return View();
+        }
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> SaveInformation(IFormCollection form)

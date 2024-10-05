@@ -1,6 +1,8 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@inject Portal.Services.INewsAndAnnouncementsService newsAndAnnouncements
+@using Portal.Services
+@{
+    var listOfNews = newsAndAnnouncements.GetValidNews();
+}
 @{
     Layout = "_WebsiteLayout";
     ViewBag.Title = "Home";
@@ -93,31 +95,24 @@
                                                 </span>
                                             </div>
 
-                                            <div style="margin-top:20px" class="remove-border-radius colibri-post-thumbnail colibri-post-has-no-thumbnail colibri-post-thumbnail-has-placeholder colibri-post-thumbnail-has-placeholder style-110 style-local-19-m5 h-overflow-hidden position-relative h-element">
-                                                <!-- <div class="h-global-transition-all colibri-post-thumbnail-shortcode style-dynamic-19-m5-height"></div> -->
-                                                <div class="align-items-lg-center align-items-md-center align-items-center flex-basis-100">
-                                                    <div class="" style="display: flex;">
-                                                        <!-- Video -->
-                                                        <div>
-                                                            <iframe src="https://drive.google.com/file/d/1mMzKhpTgPGUivNULLq5yVo5cvyoV3MLv/preview" width="640" height="480" allow="autoplay"></iframe>
-                                                            @* <iframe width="500" style="height:100%" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                                                            </iframe> *@
-                                                        </div>
-                                                        <div style="margin:20px; width: 100%; font-size: 20px !important;" class="post-2 page type-page status-publish hentry fontgreen">
-                                                            <h4 class="colibri-word-wrap fontgreen">OPENING OF CLASS</h4>
-                                                            <p class="fontgreen" style="text-align: left; font-size: 20px !important;">
-                                                                Colegio de Laurel marked the official start of the school year with a flag-raising ceremony led by the Chairperson of the CDL Board of Trustees and Mayor Lyndon Masicat Bruce.
-                                                            </p>
-                                                            <p class="fontgreen" style="text-align: left; font-size: 20px !important;">
-                                                                It was followed by an introduction to classess and election fo BS Criminolory student coordinators for easy communication with their professors and CDL officials.
-                                                            </p>
-                                                            <p class="fontgreen" style="text-align: left; font-size: 20px !important;">
-                                                                Due to the volcanic smog from Taal Volcano, the BS Criminology students were dismissed early and the face-to-face classes for the rest of the day were suspended.
-                                                            </p>
+                                            @foreach (Portal.Data.Entities.NewsAndAnnouncements news in listOfNews)
+                                            {
+                                                <div style="margin-top:20px" class="remove-border-radius colibri-post-thumbnail colibri-post-has-no-thumbnail colibri-post-thumbnail-has-placeholder colibri-post-thumbnail-has-placeholder style-110 style-local-19-m5 h-overflow-hidden position-relative h-element">
+                                                    <div class="align-items-lg-center align-items-md-center align-items-center flex-basis-100">
+                                                        <div class="" style="display: flex;">
+                                                            <div>
+                                                                @* <iframe src="https://drive.google.com/file/d/1mMzKhpTgPGUivNULLq5yVo5cvyoV3MLv/preview" width="640" height="480" allow="autoplay"></iframe> *@
+                                                                @Html.Raw(news.VideoImage)
+                                                            </div>
+                                                            <div style="margin:20px; width: 100%; font-size: 20px !important;" class="post-2 page type-page status-publish hentry fontgreen">
+                                                                <h4 class="colibri-word-wrap fontgreen">@news.Title</h4>
+                                                                @Html.Raw(news.Caption)
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            }
+
 
                                             <div class="missionClass fontgreen colibri-post-thumbnail colibri-post-has-no-thumbnail colibri-post-thumbnail-has-placeholder colibri-post-thumbnail-has-placeholder style-110 style-local-19-m5 h-overflow-hidden position-relative h-element">
                                                 <div class="align-items-lg-center align-items-md-center align-items-center flex-basis-100">

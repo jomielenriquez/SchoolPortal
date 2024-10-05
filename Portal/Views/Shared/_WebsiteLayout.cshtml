@@ -1,4 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@inject Portal.Services.ISystemParameterService systemParameter
+@using Portal.Services
+@{
+    var systemInformation = systemParameter.GetBySystemParameterType();
+    var schoolName = systemInformation.Where(x => x.Code == "SchoolName").Select(x => x.Value).FirstOrDefault();
+    var email = systemInformation.Where(x => x.Code == "Email").Select(x => x.Value).FirstOrDefault();
+    var facebookLink = systemInformation.Where(x => x.Code == "FacebookLink").Select(x => x.Value).FirstOrDefault();
+    var contactNumber = systemInformation.Where(x => x.Code == "ContactNumber").Select(x => x.Value).FirstOrDefault();
+    var location = systemInformation.Where(x => x.Code == "Location").Select(x => x.Value).FirstOrDefault();
+    var xLink = systemInformation.Where(x => x.Code == "XLink").Select(x => x.Value).FirstOrDefault();
+    var instagramLink = systemInformation.Where(x => x.Code == "InstagramLink").Select(x => x.Value).FirstOrDefault();
+    var logoLink = systemInformation.Where(x => x.Code == "Logo").Select(x => x.Value).FirstOrDefault();
+}
+<!DOCTYPE html>
 <html lang="en" class="hillstar-theme">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +25,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js" integrity="sha512-KgffulL3mxrOsDicgQWA11O6q6oKeWcV00VxgfJw4TcM8XRQT8Df9EsrYxDf7tpVpfl3qcYD96BpyPvA4d1FDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>@ViewBag.Title - Colegio De Laurel</title>
+    <title>@ViewBag.Title - @(schoolName)</title>
 
     <link rel="stylesheet" href="~/css/cdlstyles.css"/>
     <link rel="stylesheet" href="~/css/styles.css"/>
@@ -42,7 +55,7 @@
                                                                     </span>
                                                                 </div>
                                                                 <span class="list-text d-block">
-                                                                    <span> Laurel, Batangas </span>
+                                                                    <span> @(location) </span>
                                                                 </span>
                                                             </div>
                                                         </a>
@@ -59,7 +72,7 @@
                                                                     </span>
                                                                 </div>
                                                                 <span class="list-text d-block">
-                                                                    <span> (000) 123 12345 </span>
+                                                                    <span> @(contactNumber) </span>
                                                                 </span>
                                                             </div>
                                                         </a>
@@ -76,7 +89,7 @@
                                                                     </span>
                                                                 </div>
                                                                 <span class="list-text d-block">
-                                                                    <span> colegiodelaurel.info@gmail.com </span>
+                                                                    <span> @(email) </span>
                                                                 </span>
                                                             </div>
                                                         </a>
@@ -95,7 +108,7 @@
                                                 <div class="d-flex flex-wrap h-social-icons justify-content-lg-end justify-content-md-end justify-content-center">
                                                     <div class="social-icon-container d-inline-flex">
                                                         <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/ColegioDeLaurel/" h-use-smooth-scroll="true">
+                                                        <a href="@(facebookLink)" h-use-smooth-scroll="true">
                                                             <div class="icon-container h-social-icon h-global-transition">
                                                                 <div class="h-icon-svg" style="width: 100%; height: 100%;">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1896.083">
@@ -107,7 +120,7 @@
                                                     </div>
                                                     <div class="social-icon-container d-inline-flex">
                                                         <!-- Twitter -->
-                                                        <a href="#" h-use-smooth-scroll="true">
+                                                        <a href="(@xLink)" h-use-smooth-scroll="true">
                                                             <div class="icon-container h-social-icon h-global-transition">
                                                                 <div class="h-icon-svg" style="width: 100%; height: 100%;">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -119,7 +132,7 @@
                                                     </div>
                                                     <div class="social-icon-container d-inline-flex">
                                                         <!-- Instagram -->
-                                                        <a href="#" h-use-smooth-scroll="true">
+                                                        <a href="@(instagramLink)" h-use-smooth-scroll="true">
                                                             <div class="icon-container h-social-icon h-global-transition">
                                                                 <div class="h-icon-svg" style="width: 100%; height: 100%;">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1896.083">
@@ -161,7 +174,7 @@
                                             <div class="w-100 h-y-container h-column__content h-column__v-align flex-basis-auto align-self-lg-center align-self-md-center align-self-center">
                                                 <div data-colibri-id="5-h5" class="d-flex align-items-center text-lg-center text-md-center text-center justify-content-lg-center justify-content-md-center justify-content-center style-5 style-local-5-h5 position-relative h-element">
                                                     <!-- Big Logo -->
-                                                    <a class="text-logo" data-type="group" data-dynamic-mod="true" href="~/Home/Home"><img src="~/Images/CDL_Logo2.png" style="height:50px">COLEGIO DE LAUREL</a>
+                                                    <a class="text-logo" data-type="group" data-dynamic-mod="true" href="~/Home/Home"><img src="~/Images/CDL_Logo2.png" style="height:50px">@schoolName.ToUpper()</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -257,7 +270,7 @@
                                         <div class="w-100 h-y-container h-column__content h-column__v-align flex-basis-auto align-self-lg-center align-self-md-center align-self-center">
                                             <div data-colibri-id="5-h5" class="d-flex align-items-center text-lg-center text-md-center text-center justify-content-lg-center justify-content-md-center justify-content-center style-5 style-local-5-h5 position-relative h-element">
                                                 <!-- Big Logo -->
-                                                <a class="text-logo" data-type="group" data-dynamic-mod="true" href="#"><img src="~/Images/CDL_Logo2.png" style="height:50px">COLEGIO DE LAUREL</a>
+                                                <a class="text-logo" data-type="group" data-dynamic-mod="true" href="#"><img src="~/Images/CDL_Logo2.png" style="height:50px">@schoolName.ToUpper()</a>
                                             </div>
                                         </div>
                                     </div>
@@ -270,7 +283,7 @@
                                                 <div class="d-flex flex-wrap h-social-icons justify-content-lg-end justify-content-md-end justify-content-center">
                                                     <div class="social-icon-container d-inline-flex">
                                                         <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/ColegioDeLaurel/" h-use-smooth-scroll="true">
+                                                        <a href="@facebookLink" h-use-smooth-scroll="true">
                                                             <div class="icon-container h-social-icon h-global-transition">
                                                                 <div class="h-icon-svg" style="width: 100%; height: 100%;">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1896.083">
@@ -282,7 +295,7 @@
                                                     </div>
                                                     <div class="social-icon-container d-inline-flex">
                                                         <!-- Twitter -->
-                                                        <a href="#" h-use-smooth-scroll="true">
+                                                        <a href="@xLink" h-use-smooth-scroll="true">
                                                             <div class="icon-container h-social-icon h-global-transition">
                                                                 <div class="h-icon-svg" style="width: 100%; height: 100%;">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -294,7 +307,7 @@
                                                     </div>
                                                     <div class="social-icon-container d-inline-flex">
                                                         <!-- Instagram -->
-                                                        <a href="#" h-use-smooth-scroll="true">
+                                                        <a href="@(instagramLink)" h-use-smooth-scroll="true">
                                                             <div class="icon-container h-social-icon h-global-transition">
                                                                 <div class="h-icon-svg" style="width: 100%; height: 100%;">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1896.083">
@@ -326,7 +339,7 @@
                                     <div data-colibri-id="13-f4" class="d-flex h-flex-basis h-column__inner h-px-lg-1 h-px-md-1 h-px-2 v-inner-lg-1 v-inner-md-1 v-inner-2 style-65 style-local-13-f4 position-relative">
                                         <div class="w-100 h-y-container h-column__content h-column__v-align flex-basis-100 align-self-lg-start align-self-md-start align-self-start">
                                             <div data-colibri-id="13-f5" class="style-66 style-local-13-f5 position-relative h-element">
-                                                <div class="h-global-transition-all white-text"> © @DateTime.Now.Year Colegio De Laurel. All Rights Reserved. </div>
+                                                <div class="h-global-transition-all white-text"> © @DateTime.Now.Year @(schoolName). All Rights Reserved. </div>
                                             </div>
                                         </div>
                                     </div>

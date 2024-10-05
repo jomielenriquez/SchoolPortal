@@ -9,12 +9,15 @@ namespace Portal.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IAdminService _adminService;
+        private readonly INewsAndAnnouncementsService _newsAnnouncementsService;
 
         public HomeController(ILogger<HomeController> logger,
-            IAdminService adminService)
+            IAdminService adminService,
+            INewsAndAnnouncementsService newsAnnouncementsService)
         {
             _logger = logger;
             _adminService = adminService;
+            _newsAnnouncementsService = newsAnnouncementsService;
         }
 
         public IActionResult Home()

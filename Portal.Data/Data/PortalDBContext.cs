@@ -20,6 +20,8 @@ namespace Portal.Data.Data
 
         public DbSet<SystemParameter> SystemParameter { get; set; }
         public DbSet<SystemParameterType> SystemParameterType { get; set; }
+        public DbSet<NewsAndAnnouncements> NewsAndAnnouncements { get; set; }
+        public DbSet<FileStorage> FileStorage { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +40,12 @@ namespace Portal.Data.Data
                 .HasOne(u => u.SystemParameterType)
                 .WithMany(r => r.SystemParameters)
                 .HasForeignKey(u => u.SystemParameterTypeId);
+
+            modelBuilder.Entity<NewsAndAnnouncements>()
+                .HasKey(a => a.Id);
+
+            modelBuilder.Entity<FileStorage>()
+                .HasKey(a => a.Id);
 
             base.OnModelCreating(modelBuilder);
         }
