@@ -7,15 +7,8 @@ using System.Threading.Tasks;
 
 namespace Portal.Services
 {
-    public interface IAdminService
+    public interface IAdminService : IBaseService<Admin>
     {
-        IEnumerable<Admin> GetAll();
-        //IEnumerable<T> GetAllWithOptions(PageModel pageModel);
-        //int GetCountWithOptions(PageModel pageModel);
-        int DeleteWithIds(Guid[] id);
-        int Save(Admin data);
-        Admin GetWithId(Guid id);
-        int Update(Admin data);
         public Admin GetUsingUsernamePassword(string username, string password);
         bool IsValidUsernamePassword(string username, string password);
     }

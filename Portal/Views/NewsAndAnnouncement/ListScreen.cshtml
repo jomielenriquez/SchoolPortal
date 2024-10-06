@@ -1,0 +1,11 @@
+﻿@inject Portal.Services.IBaseService<Portal.Data.Entities.NewsAndAnnouncements> newsAndAnnouncements
+@using Portal.Services
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "List News And Announcements";
+    var listOfNews = newsAndAnnouncements.GetAll();
+}
+@foreach(Portal.Data.Entities.NewsAndAnnouncements news in listOfNews)
+{
+    <h1>@news.Title</h1>
+}

@@ -11,51 +11,21 @@ using System.Threading.Tasks;
 
 namespace Portal.Data
 {
-    public class AdminRepository : IAdminRepository<Admin>
+    public class AdminRepository : BaseRepository<Admin>, IAdminRepository
     {
-        private readonly PortalDBContext _dbContext;
-
-        public AdminRepository(PortalDBContext dbContext)
+        public AdminRepository(PortalDBContext portalDBContext) : base(portalDBContext)
         {
-            _dbContext = dbContext;
         }
-
-        public int DeleteWithIds(Guid[] id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Admin> GetAll()
-        {
-            return _dbContext.Admin.ToList();
-        }
-
         public Admin GetUsingUsernamePassword(string username, string password)
         {
-            return _dbContext.Admin
+            return _portalDBContext.Admin
                 .Include(a => a.Role)
                 .Where(a => a.USERNAME == username && a.PASSWORD == ComputeMd5Hash(password)).FirstOrDefault() ?? new Admin();
         }
-
-        public Admin GetWithId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool IsValidUsernamePassword(string username, string password)
         {
-            var account = _dbContext.Admin.Where(a => a.USERNAME == username && a.PASSWORD == ComputeMd5Hash(password)).FirstOrDefault();
+            var account = _portalDBContext.Admin.Where(a => a.USERNAME == username && a.PASSWORD == ComputeMd5Hash(password)).FirstOrDefault();
             return account != null ? true : false;
-        }
-
-        public int Save(Admin data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Update(Admin data)
-        {
-            throw new NotImplementedException();
         }
         private string ComputeMd5Hash(string input)
         {

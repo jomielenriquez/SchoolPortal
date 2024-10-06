@@ -9,39 +9,15 @@ using System.Threading.Tasks;
 
 namespace Portal.Services
 {
-    public class SystemParameterService : IBaseService<SystemParameter>, ISystemParameterService
+    public class SystemParameterService : BaseService<SystemParameter>, ISystemParameterService
     {
-        private readonly ISystemParameterRepository<SystemParameter> _systemParameterRepository;
+        private readonly ISystemParameterRepository _systemParameterRepository;
         private readonly IBaseRepository<SystemParameter> _baseRepository;
-        public SystemParameterService(ISystemParameterRepository<SystemParameter> systemParameterRepository,
-            IBaseRepository<SystemParameter> baseRepository)
+        public SystemParameterService(ISystemParameterRepository systemParameterRepository,
+            IBaseRepository<SystemParameter> baseRepository) : base (baseRepository)
         {
             _systemParameterRepository = systemParameterRepository;
             _baseRepository = baseRepository;
-        }
-        public int DeleteWithIds(Guid[] id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<SystemParameter> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public SystemParameter GetWithId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SystemParameter Save(SystemParameter data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SystemParameter Update(SystemParameter data)
-        {
-            return _baseRepository.Save(data);
         }
         public IEnumerable<SystemParameter> GetBySystemParameterType()
         {
