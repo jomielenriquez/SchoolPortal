@@ -11,10 +11,11 @@ namespace Portal.Data.Entities
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Caption { get; set; }
-        public string VideoImage { get; set; }
+        public string? VideoImage { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? ExpirationDate { get; set; }
         public int Order { get; set; }
+        public Guid? FileId { get; set; }
     }
 }

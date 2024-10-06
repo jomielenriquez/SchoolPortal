@@ -1,0 +1,37 @@
+﻿@model Portal.Data.Entities.FileStorage
+/*
+    modal-sm: Small modal
+    modal-lg: Large modal
+    modal-xl: Extra large modal
+*/
+<div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">@Model.FileDownloadName</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modalContent">
+            <div>
+                @if (Model.FileType == (int)Portal.Controllers.FileType.Pdf)
+                {
+                    <iframe src="~/uploads/@Model.FileName" width="100%" height="600px">
+                        This browser does not support PDFs. Please download the PDF to view it:
+                        <a href="~/uploads/@Model.FileName" download="@Model.FileDownloadName">Download PDF</a>
+                    </iframe>
+                }
+                else if (Model.FileType == (int)Portal.Controllers.FileType.Image)
+                {
+                    <img src="~/uploads/@Model.FileName" width="100%" alt="@Model.FileName">
+                }
+                else
+                {
+                    <p>You can only view images and pdfs.</p>
+                }
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="@Url.Action("DownloadFile", "File", new { id = Model.Id })" class="btn btn-primary">Download</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

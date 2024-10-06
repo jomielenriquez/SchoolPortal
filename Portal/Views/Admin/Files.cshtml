@@ -5,17 +5,35 @@
     var files = fileService.GetAll();
 }
 <form asp-action="UploadFile" asp-controller="File" method="post" enctype="multipart/form-data">
-    <input type="file" name="uploadedFile" />
-    <button type="submit">Upload</button>
+    <div class="input-group mb-3">
+        <input type="file" class="form-control" id="uploadedFile" name="uploadedFile">
+        <button type="submit" class="input-group-text btn-primary" for="uploadedFile">Upload</button>
+    </div>
 </form>
-
-@foreach(Portal.Data.Entities.FileStorage file in files)
-{
-    <a href="@Url.Action("DownloadFile", "File", new { id = file.Id })">@file.FileName</a>
-    <img src="data:image/jpeg;base64,@file.FileData" alt="Image" />
-    <iframe src="data:application/pdf;base64,@file.FileData" width="100%" height="600px">
-        This browser does not support PDFs. Please download the PDF to view it:
-        <a href="data:application/pdf;base64,@file.FileData" download="@file.FileName">Download PDF</a>
-    </iframe>
-}
-
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach(Portal.Data.Entities.FileStorage file in files)
+    {
+        <div class="col">
+            <div class="card">
+                @if (file.FileType == (int)Portal.Controllers.FileType.Pdf)
+                {
+                    <img src="https://www.svgrepo.com/show/28209/pdf.svg" class="card-img-top" alt="@file.FileName">
+                }
+                else if (file.FileType == (int)Portal.Controllers.FileType.Image)
+                {
+                    <img src="~/uploads/@file.FileName" class="card-img-top" alt="@file.FileName">
+                }
+                else
+                {
+                    <img src="https://cdn-icons-png.flaticon.com/512/101/101671.png" class="card-img-top" alt="@file.FileName">
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@file.FileDownloadName</h5>
+                    <a href="@Url.Action("DownloadFile", "File", new { id = file.Id })" class="btn btn-primary btn-sm">Download</a>
+                    <a href="@Url.Action("Delete", "File", new { id = file.Id })" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="#" data-url="@Url.Action("LoadPartial", "File", new { id = file.Id })" class="open-modal btn btn-info btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

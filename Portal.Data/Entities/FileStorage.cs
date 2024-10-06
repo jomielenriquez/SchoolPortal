@@ -15,6 +15,8 @@ namespace Portal.Data.Entities
         [Required]
         public string FileName { get; set; }
         [Required]
-        public string FileData { get; set; }
+        public int FileType { get; set; }
+        [Required]
+        public string FileDownloadName { get; set; }
     }
 }

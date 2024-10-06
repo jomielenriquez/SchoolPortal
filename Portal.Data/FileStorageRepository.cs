@@ -53,7 +53,8 @@ namespace Portal.Data
             {
                 // Update fields in the existing record
                 existingFile.FileName = data.FileName;
-                existingFile.FileData = data.FileData;
+                existingFile.FileType = data.FileType;
+                existingFile.FileDownloadName = data.FileDownloadName;
 
                 // Save changes to the database
                 _dbContext.SaveChanges();
