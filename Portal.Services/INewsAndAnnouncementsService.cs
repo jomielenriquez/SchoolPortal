@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Portal.Services
 {
-    public interface INewsAndAnnouncementsService
+    public interface INewsAndAnnouncementsService : IBaseService<NewsAndAnnouncements>
     {
         IEnumerable<NewsAndAnnouncements> GetValidNews();
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Portal.Data.Entities
 {
-    public class FileStorage
+    public class FileStorage : IEntity
     {
         [Key]
         [Required]

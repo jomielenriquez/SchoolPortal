@@ -9,44 +9,17 @@ using System.Threading.Tasks;
 
 namespace Portal.Data
 {
-    public class NewsAndAnnouncementsRepository : IBaseRepository<NewsAndAnnouncements>, INewsAndAnnouncementsRepository
+    public class NewsAndAnnouncementsRepository : BaseRepository<NewsAndAnnouncements>, INewsAndAnnouncementsRepository
     {
-        private readonly PortalDBContext _dbContext;
-        public NewsAndAnnouncementsRepository(PortalDBContext dbContext)
+        public NewsAndAnnouncementsRepository(PortalDBContext portalDBContext) : base(portalDBContext)
         {
-            _dbContext = dbContext;
-        }
-
-        public int DeleteWithIds(Guid[] id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<NewsAndAnnouncements> GetAll()
-        {
-            throw new NotImplementedException();
         }
 
         public IEnumerable<NewsAndAnnouncements> GetValidNews()
         {
-            return _dbContext.NewsAndAnnouncements
+            return _portalDBContext.NewsAndAnnouncements
                 .Where(x => x.IsDeleted == false && (x.ExpirationDate == null || x.ExpirationDate >= DateTime.Now))
                 .OrderBy(x => x.Order);
-        }
-
-        public NewsAndAnnouncements GetWithId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public NewsAndAnnouncements Save(NewsAndAnnouncements data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public NewsAndAnnouncements Update(NewsAndAnnouncements data)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -8,36 +8,12 @@ using System.Threading.Tasks;
 
 namespace Portal.Services
 {
-    public class FileStorageService : IBaseService<FileStorage>
+    public class FileStorageService : BaseService<FileStorage>
     {
         private readonly IBaseRepository<FileStorage> _baseRepository;
-        public FileStorageService(IBaseRepository<FileStorage> baseRepository)
+        public FileStorageService(IBaseRepository<FileStorage> baseRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
-        }
-        public int DeleteWithIds(Guid[] id)
-        {
-            return _baseRepository.DeleteWithIds(id);
-        }
-
-        public IEnumerable<FileStorage> GetAll()
-        {
-            return _baseRepository.GetAll();
-        }
-
-        public FileStorage GetWithId(Guid id)
-        {
-            return _baseRepository.GetWithId(id);
-        }
-
-        public FileStorage Save(FileStorage data)
-        {
-            return _baseRepository.Save(data);
-        }
-
-        public FileStorage Update(FileStorage data)
-        {
-            return _baseRepository.Update(data);
         }
     }
 }

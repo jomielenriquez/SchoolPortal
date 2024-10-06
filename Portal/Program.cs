@@ -21,6 +21,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddDbContext<PortalDBContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
+
 builder.Services.AddScoped<IAdminRepository<Admin>, AdminRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 
@@ -30,12 +33,12 @@ builder.Services.AddScoped<IBaseRepository<SystemParameter>, SystemParameterRepo
 builder.Services.AddScoped<ISystemParameterService, SystemParameterService>();
 builder.Services.AddScoped<IBaseService<SystemParameter>, SystemParameterService>();
 
-builder.Services.AddScoped<INewsAndAnnouncementsRepository, NewsAndAnnouncementsRepository>();
-builder.Services.AddScoped<IBaseRepository<NewsAndAnnouncements>, NewsAndAnnouncementsRepository>();
 builder.Services.AddScoped<INewsAndAnnouncementsService, NewsAndAnnouncementsService>();
-builder.Services.AddScoped<IBaseService<NewsAndAnnouncements>, NewsAndAnnouncementsService>();
+builder.Services.AddScoped<INewsAndAnnouncementsRepository, NewsAndAnnouncementsRepository>();
+//builder.Services.AddScoped<IBaseRepository<NewsAndAnnouncements>, NewsAndAnnouncementsRepository>();
+//builder.Services.AddScoped<IBaseService<NewsAndAnnouncements>, NewsAndAnnouncementsService>();
 
-builder.Services.AddScoped<IBaseRepository<FileStorage>, FileStorageRepository>();
+//builder.Services.AddScoped<IBaseRepository<FileStorage>, FileStorageRepository>();
 builder.Services.AddScoped<IBaseService<FileStorage>, FileStorageService>();
 
 var app = builder.Build();
