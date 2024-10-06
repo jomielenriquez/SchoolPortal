@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Portal.Data.Entities
 {
-    public class NewsAndAnnouncements
+    public class NewsAndAnnouncements : IEntity
     {
         public Guid Id { get; set; }
         public string Title { get; set; }

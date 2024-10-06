@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Portal.Data.Entities
 {
-    public class SystemParameterType
+    public class SystemParameterType : IEntity
     {
         [Key]
         [Required]

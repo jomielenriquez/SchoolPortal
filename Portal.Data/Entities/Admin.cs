@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Portal.Data.Entities
 {
-    public class Admin
+    public class Admin : IEntity
     {
         [Key]
         [Required]
-        public int ID { get; set; }
+        public Guid Id { get; set; }
         [Required]
         public string FIRSTNAME { get; set; }
         [Required]
@@ -21,7 +21,7 @@ namespace Portal.Data.Entities
         [Required]
         public string PASSWORD { get; set; }
         [Required]
-        public int ROLEID { get; set; }
+        public Guid ROLEID { get; set; }
         public Role Role { get; set; }
     }
 }

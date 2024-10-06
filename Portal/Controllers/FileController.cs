@@ -134,8 +134,6 @@ namespace Portal.Controllers
         public IActionResult LoadPartial(Guid id)
         {
             var file = _baseRepository.GetWithId(id);
-            //var model = new YourModel { Title = "Sample Title", Description = "This content is loaded into the modal." };
-            //return PartialView("_SamplePartial", model);
             return PartialView("Modals/_File", file);
         }
     }

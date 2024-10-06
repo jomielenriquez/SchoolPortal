@@ -26,10 +26,10 @@ namespace Portal.Data.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Admin>()
-                .HasKey(a => a.ID);
+                .HasKey(a => a.Id);
 
             modelBuilder.Entity<Role>()
-                .HasKey(a => a.ID);
+                .HasKey(a => a.Id);
 
             modelBuilder.Entity<Admin>()
                 .HasOne(u => u.Role)

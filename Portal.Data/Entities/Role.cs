@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Portal.Data.Entities
 {
-    public class Role
+    public class Role : IEntity
     {
         [Key]
         [Required]
-        public int ID { get; set; }
+        public Guid Id { get; set; }
         [Required]
         public string NAME { get; set; }
         public string DESCRIPTION { get; set; }
