@@ -11,7 +11,7 @@ namespace Portal.Data.Entities
     {
         [Key]
         [Required]
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         [Required]
         public string FIRSTNAME { get; set; }
         [Required]

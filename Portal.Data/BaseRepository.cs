@@ -20,7 +20,7 @@ namespace Portal.Data
         }
         public int DeleteWithIds(Guid[] id)
         {
-            var entitiesToDelete = _portalDBContext.Set<T>().Where(e => id.Contains(((IEntity)e).Id)).ToList();
+            var entitiesToDelete = _portalDBContext.Set<T>().Where(e => id.Contains(((IEntity)e).Id ?? new Guid())).ToList();
 
             if (entitiesToDelete.Any())
             {

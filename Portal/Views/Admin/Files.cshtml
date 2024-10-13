@@ -6,7 +6,7 @@
 }
 <form asp-action="UploadFile" asp-controller="File" method="post" enctype="multipart/form-data">
     <div class="input-group mb-3">
-        <input type="file" class="form-control" id="uploadedFile" name="uploadedFile">
+        <input type="file" class="form-control" id="uploadedFile" name="uploadedFile" required>
         <button type="submit" class="input-group-text btn-primary" for="uploadedFile">Upload</button>
     </div>
 </form>

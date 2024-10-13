@@ -1,0 +1,112 @@
+﻿@model Portal.Data.Entities.NewsAndAnnouncements
+@inject Portal.Services.IBaseService<Portal.Data.Entities.FileStorage> file;
+@*
+    modal-sm: Small modal
+    modal-lg: Large modal
+    modal-xl: Extra large modal
+ *@
+ <style>
+     .hidden{
+         display:none;
+     }
+ </style>
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <form method="post" asp-action="Save" asp-controller="NewsAndAnnouncement">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">@(Model.Id == null ? "Add" : "Edit") News And Announcements</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalContent">
+                <div>
+                    <div class="mb-3 row">
+                        @Html.TextBoxFor(m => m.Id, new { @id = "Id", @name = "Id", @class = "hidden" })
+                        <label for="Title" class="col-sm-2 col-form-label">Title</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(m => m.Title, new {@id="Title", @name="Title", @class="form-control", @required="required"})
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="Caption" class="col-sm-2 col-form-label">Caption</label>
+                        <div class="col-sm-10">
+                            @Html.TextAreaFor(m => m.Caption, new { @id = "Caption", @name = "Caption", @class = "form-control", @required = "required", @rows="8"})
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="Order" class="col-sm-2 col-form-label">Order</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(m => m.Order, new { @id = "Order", @name = "Order", @class = "form-control", @required = "required", @type="number" })
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="Type" class="col-sm-2 col-form-label">Type</label>
+                        <div class="col-sm-10">
+                            @{
+                                var type = Model.VideoImage != null ? "googleDrive" : Model.FileId != null ? "system" : "";
+                                var types = new List<SelectListItem>()
+                                {
+                                    new SelectListItem {Value = "googleDrive", Text = "Google Drive"},
+                                    new SelectListItem {Value = "system", Text = "System"}
+                                };
+                            }
+                            @Html.DropDownListFor(m => type, types, "Select a Type", new { @id = "Type", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="mb-3 row @(Model.VideoImage == null ? "hidden" : "")" id="divVideoImage">
+                        <label for="VideoImage" class="col-sm-2 col-form-label">Google Drive link</label>
+                        <div class="col-sm-10">
+                            @Html.TextAreaFor(m => m.VideoImage, new { @id = "VideoImage", @name = "VideoImage", @class = "form-control", @rows = "8" })
+                        </div>
+                    </div>
+                    <div class="mb-3 row @(Model.FileId == null ? "hidden" : "")" id="divSystemFile">
+                        @{
+                            var files = file
+                                .GetAll()
+                                .Where(x => x.FileType == (int)Portal.Controllers.FileType.Image || x.FileType == (int)Portal.Controllers.FileType.Video)
+                                .Select(f => new SelectListItem
+                                {
+                                    Value = f.Id.ToString(),
+                                    Text = f.FileDownloadName
+                                });
+                        }
+                        <label for="FileId" class="col-sm-2 col-form-label">Media</label>
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(m => m.FileId, files, "Select a file", new { @id = "FileId", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="ExpirationDate" class="col-sm-2 col-form-label">Expiration</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(m => m.ExpirationDate, new { @id = "ExpirationDate", @name = "ExpirationDate", @class = "form-control", @required = "required", @type = "datetime-local" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#Type").change(function () {
+            var selectedType = $(this).val();
+            if (selectedType == "googleDrive") { 
+                $("#divVideoImage").removeClass("hidden");
+                $("#divSystemFile").addClass("hidden");
+
+                $("#VideoImage").prop("required", "required");
+                $('#FileId').removeAttr('required');
+            }
+            else if (selectedType == "system") {
+                $("#divSystemFile").removeClass("hidden");
+                $("#divVideoImage").addClass("hidden");
+
+                $("#FileId").prop("required", "required");
+                $('#VideoImage').removeAttr('required');
+            }
+        });
+    });
+</script>

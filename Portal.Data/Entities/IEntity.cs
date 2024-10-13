@@ -8,6 +8,6 @@ namespace Portal.Data.Entities
 {
     public interface IEntity
     {
-        Guid Id { get; set; }
+        Guid? Id { get; set; }
     }
 }
