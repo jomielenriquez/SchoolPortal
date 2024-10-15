@@ -1,4 +1,5 @@
-﻿using Portal.Data.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Portal.Data.Data;
 using Portal.Data.Entities;
 using Portal.Data.Interface;
 using System;
@@ -18,6 +19,7 @@ namespace Portal.Data
         public IEnumerable<NewsAndAnnouncements> GetValidNews()
         {
             return _portalDBContext.NewsAndAnnouncements
+                .Include(x => x.FileStorage)
                 .Where(x => x.IsDeleted == false && (x.ExpirationDate == null || x.ExpirationDate >= DateTime.Now))
                 .OrderBy(x => x.Order);
         }

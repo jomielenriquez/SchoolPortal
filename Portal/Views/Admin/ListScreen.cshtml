@@ -1,0 +1,50 @@
+﻿@inject Portal.Services.IBaseService<Portal.Data.Entities.Admin> admin
+@using Portal.Services
+@model Portal.Models.AppModel<Portal.Data.Entities.Admin>
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "User List";
+}
+<h3>Admin</h3>
+<a href="#" data-url="@Url.Action("LoadAddModal", "Admin")" class="open-modal btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Add Admin</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model.Data)
+        {
+            <tr>
+                <td>@(data.FIRSTNAME + " " + data.LASTNAME)</td>
+                <td>@data.USERNAME</td>
+                <td>
+                    <a href="@Url.Action("Delete", "Admin", new { id = data.Id })" class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i> Delete</a>
+                    <a href="#" data-url="@Url.Action("LoadAddModal", "Admin", new { id = data.Id })" class="open-modal btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group me-2" role="group" aria-label="First group">
+        @{
+            var buttonCount = (Model.Count / Model.PageModel.PageSize) + 1;
+        }
+        @for (var i = 1; i <= buttonCount; i++)
+        {
+            <a class="btn btn-primary"
+               asp-controller="Admin"
+               asp-action="ListScreen"
+               asp-route-Page="@i"
+               asp-route-PageSize="@Model.PageModel.PageSize"
+               asp-route-OrderByProperty="@Model.PageModel.OrderByProperty"
+               asp-route-IsAscending="@Model.PageModel.IsAscending">
+                @i.ToString()
+            </a>
+        }
+    </div>
+</div>

@@ -18,5 +18,6 @@ namespace Portal.Data.Entities
         public int FileType { get; set; }
         [Required]
         public string FileDownloadName { get; set; }
+        public virtual ICollection<NewsAndAnnouncements> NewsAndAnnouncements { get; set; }
     }
 }

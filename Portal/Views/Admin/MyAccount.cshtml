@@ -1,0 +1,10 @@
+﻿@model Portal.Data.Entities.Admin
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "My Account";
+}
+@Html.Partial("UpdateInfo.cshtml", Model)
+
+<br />
+
+@Html.Partial("UpdatePassword.cshtml", Model)

@@ -44,6 +44,11 @@ namespace Portal.Data.Data
             modelBuilder.Entity<NewsAndAnnouncements>()
                 .HasKey(a => a.Id);
 
+            modelBuilder.Entity<NewsAndAnnouncements>()
+                .HasOne(u => u.FileStorage)
+                .WithMany(r => r.NewsAndAnnouncements)
+                .HasForeignKey(u => u.FileId);
+
             modelBuilder.Entity<FileStorage>()
                 .HasKey(a => a.Id);
 

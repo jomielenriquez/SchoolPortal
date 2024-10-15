@@ -20,5 +20,6 @@ namespace Portal.Data.Entities
         public DateTime? ExpirationDate { get; set; }
         public int Order { get; set; }
         public Guid? FileId { get; set; }
+        public FileStorage FileStorage { get; set; }
     }
 }

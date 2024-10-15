@@ -31,9 +31,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="NewsAndAnnouncement" asp-action="ListScreen">News And Annoucements</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ListScreen">Admin Users</a>
+                        </li>
                     </ul>
                     <div class="d-flex">
-                        <a asp-action="Logout" asp-controller="Admin" class="nav-link text-dark">@User.Identity.Name</a>
+                        <a asp-action="MyAccount" asp-controller="Admin" asp-route-Id="@User.FindFirst("Id")?.Value" class="nav-link text-dark">@User.Identity.Name</a>
                         <a asp-action="Logout" asp-controller="Admin" class="nav-link text-dark">Logout</a>
                     </div>
                 </div>
@@ -42,6 +45,12 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.Error
+                </div>
+            }
             @RenderBody()
             @* Modal *@
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
